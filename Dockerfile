@@ -41,7 +41,7 @@ RUN yum update -y && yum -y install glibc.i686 libstdc++.i686 net-tools wget && 
 RUN ${STEAM_CMD_BASE_EXEC} +app_update "${CSGO_APP_ID} validate" +quit
 
 #install metamod
-RUN export METAMOD_FILE=$(curl https://mms.alliedmods.net/mmsdrop/1.10/mmsource-latest-linux) && \
+RUN export METAMOD_FILE=$(curl -s https://mms.alliedmods.net/mmsdrop/1.10/mmsource-latest-linux) && \
     cd $CSGO_INSTALL_PATH/csgo && \
     curl -s https://mms.alliedmods.net/mmsdrop/1.10/${METAMOD_FILE} | tar -vxz 
 
