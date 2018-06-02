@@ -15,6 +15,8 @@ ENV STEAM_CMD_BASE_EXEC="${STEAM_CMD_FILE} +login ${STEAM_CMD_LOGIN} +force_inst
 ENV GAME_LOGIN_TOKEN=""
 ENV CSGO_GAME_TYPE=1
 ENV CSGO_GAME_MODE=0
+ENV CSGO_PORT=27015
+ENV CSGO_IP=0.0.0.0
 ENV CSGO_MAP_GROUP=mg_bomb
 ENV CSGO_MAP=de_dust2
 
@@ -48,5 +50,3 @@ RUN export METAMOD_FILE=$(curl -s https://mms.alliedmods.net/mmsdrop/1.10/mmsour
 #install sourcemod
 RUN cd $CSGO_INSTALL_PATH/csgo && \
     curl -s https://sm.alliedmods.net/smdrop/${SOURCEMOD_MAJOR_VERSION}/$(curl -s https://sm.alliedmods.net/smdrop/${SOURCEMOD_MAJOR_VERSION}/sourcemod-latest-linux) | tar -vzx
-
-ENTRYPOINT ["/opt/scripts/start.sh"]
